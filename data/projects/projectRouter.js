@@ -7,8 +7,8 @@ router.post('/', (req, res) => {
     const projectInfo = req.body
     projectModel
         .insert(projectInfo)
-        .then(() => {
-            res.status(201).json({ message: "Project created successfully"})
+        .then(e => {
+            res.status(201).json([{ message: "Project created successfully"}, e])
         })
         .catch(err => {
             console.error(err)

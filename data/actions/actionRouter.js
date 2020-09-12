@@ -3,13 +3,12 @@ const actionModel = require('../helpers/actionModel');
 
 const router = express.Router();
 
-//create
 router.post('/', (req, res) => {
     const actionInfo = req.body
     actionModel
         .insert(actionInfo)
-        .then(() => {
-            res.status(201).json({ message: "Action successfully created" })
+        .then(e => {
+            res.status(201).json([{ message: "Action successfully created" }, e])
         })
         .catch(err => {
             console.error(err);
@@ -17,7 +16,6 @@ router.post('/', (req, res) => {
         })
 })
 
-//read
 router.get('/', (req, res) => {
     actionModel
         .get(req.id)
@@ -30,7 +28,6 @@ router.get('/', (req, res) => {
         })
 })
 
-//update
 router.put('/:id', (req, res) => {
     const actionInfo = req.body;
     const { id } = req.params;
@@ -49,7 +46,6 @@ router.put('/:id', (req, res) => {
         })
 })
 
-//delete
 router.delete('/:id', (req, res) => {
     actionModel
         .remove(req.params.id)
