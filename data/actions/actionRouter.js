@@ -5,15 +5,19 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
     const actionInfo = req.body
-    actionModel
+    const projectId = req.body.project_id
+    if (projectId) {
+        actionModel
         .insert(actionInfo)
-        .then(e => {
-            res.status(201).json([{ message: "Action successfully created" }, e])
+        .then(() => {
+            res.status(201).json({ message: "Action successfully created" })
         })
         .catch(err => {
             console.error(err);
-            res.status(500).json({ error: "Unable to create action" })
+            res.status(500).json({ error: "Invalid project ID" })
         })
+    }
+    
 })
 
 router.get('/', (req, res) => {
