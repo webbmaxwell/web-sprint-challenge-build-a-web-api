@@ -122,6 +122,9 @@ After finishing your required elements, you can push your work further. These go
 - DONE
 
 - [ ] Configure the API to support environment variables.
+
+- DONE (I don't know if I actually need to set up environment variables or just make it so my application can support them)
+
 - [ ] Use middleware for validation of incoming data.
 
 ## Submission format
