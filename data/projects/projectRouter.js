@@ -3,7 +3,6 @@ const projectModel = require('../helpers/projectModel');
 
 const router = express.Router();
 
-//create
 router.post('/', (req, res) => {
     const projectInfo = req.body
     projectModel
@@ -16,7 +15,6 @@ router.post('/', (req, res) => {
         })
 })
 
-//read
 router.get('/', (req,res) => {
     projectModel
         .get(req.id)
@@ -29,7 +27,6 @@ router.get('/', (req,res) => {
         })
 })
 
-//update
 router.put('/:id', (req, res) => {
     const projectInfo = req.body;
     const { id } = req.params;
@@ -48,7 +45,6 @@ router.put('/:id', (req, res) => {
         })
 })
 
-//delete
 router.delete('/:id', (req, res) => {
     projectModel
         .remove(req.params.id)
@@ -65,7 +61,6 @@ router.delete('/:id', (req, res) => {
         })
 })
 
-//getProjectActions
 router.get('/:id/actions', (req, res) => {
     projectModel
         .getProjectActions(req.params.id)
